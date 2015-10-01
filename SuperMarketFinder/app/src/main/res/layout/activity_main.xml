@@ -9,59 +9,60 @@
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:background="#fffeb934" >
+        android:background="#efe7fe41" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="300dp"
+                android:layout_height="100dp"
                 android:id="@+id/startlogo"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/google" />
+                android:background="@drawable/logo"
+                android:layout_marginTop="20dp" />
 
             <ImageButton
-                android:layout_width="237dp"
+                android:layout_width="280dp"
                 android:layout_height="79dp"
                 android:id="@+id/b_mercadona"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/gr_button"
+                android:background="@drawable/mercadona_logo"
                 android:layout_margin="25dp" />
 
             <ImageButton
-                android:layout_width="237dp"
+                android:layout_width="280dp"
                 android:layout_height="79dp"
                 android:id="@+id/b_dia"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/gr_button"
+                android:background="@drawable/dia_logo"
                 android:layout_margin="25dp" />
 
 
             <ImageButton
-                android:layout_width="237dp"
+                android:layout_width="280dp"
                 android:layout_height="79dp"
                 android:id="@+id/b_supersol"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/gr_button"
+                android:background="@drawable/supersol_logo"
                 android:layout_margin="25dp" />
 
             <ImageButton
-                android:layout_width="237dp"
+                android:layout_width="280dp"
                 android:layout_height="79dp"
                 android:id="@+id/b_carrefour"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/gr_button"
+                android:background="@drawable/carrefour_logo"
                 android:layout_margin="25dp" />
 
             <ImageButton
-                android:layout_width="237dp"
+                android:layout_width="280dp"
                 android:layout_height="79dp"
-                android:id="@+id/b_nuevo"
+                android:id="@+id/b_alcampo"
                 android:layout_gravity="center_horizontal"
-                android:background="@drawable/gr_button"
+                android:background="@drawable/alcampo_logo"
                 android:layout_margin="25dp" />
         </LinearLayout>
     </ScrollView>
