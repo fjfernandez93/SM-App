@@ -1,14 +1,17 @@
 package com.example.paco.supermarketfinder;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-
 
 public class MainActivity extends ActionBarActivity {
 
@@ -110,9 +113,27 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.about) {
-            return true;
+            DialogFragment newFragment = new InformationDialog();
+            newFragment.show(getSupportFragmentManager(),"nuse");
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public static class InformationDialog extends DialogFragment{
+        @Override
+        public Dialog onCreateDialog(Bundle onSaveInstances) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setMessage("Aplication developped by +S Apps")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+
+                        }
+                    });                    ;
+            // Create the AlertDialog object and return it
+            return builder.create();
+        }
+
     }
 }
