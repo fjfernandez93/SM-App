@@ -13,7 +13,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 
+import java.util.ArrayList;
+
 public class MainActivity extends ActionBarActivity {
+
+    //Miembros utilizados para el settingcheckbox
+    public static final String SETTING_CHECK_BOX = "SETTING_CHECK_BOX";
+    private ArrayList< SettingCheckBox > settingList;
 
     private ImageButton b_mercadona;
     private ImageButton b_dia;
@@ -25,6 +31,14 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Crea el array para la configuracion
+        settingList = new ArrayList < SettingCheckBox > ();
+        settingList.add(new SettingCheckBox("Option A"));
+        settingList.add(new SettingCheckBox("Option B"));
+        if ( savedInstanceState != null ) {
+            settingList = (ArrayList < SettingCheckBox >) savedInstanceState.getSerializable ( SETTING_CHECK_BOX );
+        }
 
         b_mercadona = (ImageButton) findViewById(R.id.b_mercadona);
         b_dia = (ImageButton) findViewById(R.id.b_dia);
@@ -112,12 +126,20 @@ public class MainActivity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.about) {
-            DialogFragment newFragment = new InformationDialog();
-            newFragment.show(getSupportFragmentManager(),"nuse");
+        switch (id) {
+            case R.id.about:
+                DialogFragment newFragment = new InformationDialog();
+                newFragment.show(getSupportFragmentManager(),"nuse");
+                return true;
+            /*case R.id.select:
+                Intent intent = new Intent ( this , MyActivity_Settings.class );
+                intent.putExtra ( SETTING_CHECK_BOX , settingList );
+                startActivityForResult ( intent , 0 );*/
+            default:
+                return super.onOptionsItemSelected(item);
         }
 
-        return super.onOptionsItemSelected(item);
+        //return super.onOptionsItemSelected(item);
     }
 
 
@@ -135,5 +157,21 @@ public class MainActivity extends ActionBarActivity {
             return builder.create();
         }
 
+    }
+
+
+    protected void onSaveInstanceState ( Bundle outState ) {
+        super.onSaveInstanceState ( outState );
+        outState.putSerializable ( SETTING_CHECK_BOX , settingList );
+    }
+
+    protected void onActivityResult ( int requestCode , int resultCode , Intent data ) {
+        if (resultCode != RESULT_OK || data == null)
+            return;
+        settingList = (ArrayList<SettingCheckBox>) data.getSerializableExtra(SETTING_CHECK_BOX);
+    }
+
+    private void reDrawElements(){
+       // for
     }
 }
